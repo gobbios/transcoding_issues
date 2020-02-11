@@ -3,7 +3,7 @@ xfiles <- list.files("yunifiles")
 xfiles <- sort(unique(substr(xfiles, 15, 18)))
 
 xdata <- data.frame(file = rep(xfiles, each = 3), 
-                    ori_vid = c(rep("mts", 9 * 3), rep("mov", 21 * 3), rep("mp4", 9 * 3)),
+                    ori_vid = c(rep("mts", 9 * 3), rep("mov", 21 * 3), rep("avi", 5 * 3), rep("mp4", 9 * 3)),
                     trans_to = c("mp4", "mov", "avi"), 
                     stringsAsFactors = FALSE)
 xdata$eval <- substr(xdata$file, 1, 2)
@@ -34,10 +34,11 @@ for (i in 1:nrow(xdata)) {
 }
 
 
-xdata$sym <- c(0, 16, 2, 3)[as.numeric(as.factor(xdata$eval))]
+xdata$sym <- c(0, 16, 2, 15, 3)[as.numeric(as.factor(xdata$eval))]
 xdata$xcol <- "black"
 xdata$xcol[xdata$eval == "11"] <- "red"
-xdata$xcol[xdata$eval == "16"] <- "orange"
+xdata$xcol[xdata$eval == "23"] <- "orange"
+xdata$xcol[xdata$eval == "16"] <- "blue"
 
 
 par(mfcol = c(2, 3), las= 1, family = "serif")
